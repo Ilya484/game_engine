@@ -7,7 +7,7 @@ font = pygame.font.SysFont("Arial", 20)
 
 
 class Button:
-    def __init__(self, text: str, name: str, pos: tuple[int, int], font_size: int, bg_out_of_focus: str = "black",
+    def __init__(self, text: str, name: str, pos: tuple[int, int], font_size: int, font: str = "Arial", color_text: str = "White", bg_out_of_focus: str = "black",
                  bg_focus: str = "orange", sound_of_click_unlocked: None | Sound = None, is_focus: bool = False, is_locked: bool = False, is_visible: bool = True):
         self.__sound_of_click_unlocked = sound_of_click_unlocked
         self._type = "btn"
@@ -18,9 +18,9 @@ class Button:
         self.bg_focus = bg_focus
         self.__x, self.__y = pos
         self.text = text
-        self.font = pygame.font.SysFont("Arial", font_size)
+        self.font = pygame.font.SysFont(font, font_size)
 
-        self.text = self.font.render(text, True, pygame.Color("White"))
+        self.text = self.font.render(text, True, pygame.Color(color_text))
 
         self.size = self.text.get_size()
         self.bg = bg_out_of_focus
@@ -66,7 +66,3 @@ class Button:
                     if self.__sound_of_click_unlocked is not None:
                         self.__sound_of_click_unlocked.play()
                     return True
-
-
-
-# Buttons
